@@ -1,37 +1,37 @@
 import React from 'react';
+import { Spell } from '../types/Spell';
+import './SpellSorter.css';
 
-type Spell = {
-    name: string;
-    level: number;
-    school: string;
-    castingTime: string;
-    range: string;
-    damageType: string;
-};
+interface SpellSorterProps {
+  onSort: (sortBy: keyof Spell, order: 'asc' | 'desc') => void;
+}
 
-type SpellSorterProps = {
-    onSort: (key: keyof Spell) => Spell[];
-    onSortChange: (sortBy: string) => void;
-};
+const SpellSorter: React.FC<SpellSorterProps> = ({ onSort }) => {
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const [sortBy, order] = e.target.value.split('-') as [keyof Spell, 'asc' | 'desc'];
+    onSort(sortBy, order);
+  };
 
-const SpellSorter: React.FC<SpellSorterProps> = ({ onSortChange }) => {
-    const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        onSortChange(event.target.value);
-    };
-
-    return (
-        <div>
-            <label htmlFor="sort">Sort by:</label>
-            <select id="sort" onChange={handleSortChange}>
-                <option value="name">Name</option>
-                <option value="level">Level</option>
-                <option value="school">School</option>
-                <option value="castingTime">Casting Time</option>
-                <option value="range">Range</option>
-                <option value="damageType">Damage Type</option>
-            </select>
-        </div>
-    );
+  return (
+    <div className="spell-sorter">
+      <h3 className="section-title">Sort Spells</h3>
+      <div className="sorter-group">
+        <label className="sorter-label">Sort by</label>
+        <select className="sorter-select" onChange={handleSortChange}>
+          <option value="name-asc">Name (A-Z)</option>
+          <option value="name-desc">Name (Z-A)</option>
+          <option value="level-asc">Level (Low to High)</option>
+          <option value="level-desc">Level (High to Low)</option>
+          <option value="school-asc">School (A-Z)</option>
+          <option value="school-desc">School (Z-A)</option>
+          <option value="casting_time-asc">Casting Time (A-Z)</option>
+          <option value="casting_time-desc">Casting Time (Z-A)</option>
+          <option value="range-asc">Range (A-Z)</option>
+          <option value="range-desc">Range (Z-A)</option>
+        </select>
+      </div>
+    </div>
+  );
 };
 
 export default SpellSorter;

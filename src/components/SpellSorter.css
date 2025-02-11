@@ -1,0 +1,68 @@
+.spell-sorter {
+  padding: 15px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.section-title {
+  margin: 0 0 10px 0;
+  font-size: 1em;
+  color: #2c3e50;
+  font-weight: 600;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.sorter-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.sorter-label {
+  font-size: 0.9em;
+  color: #2c3e50;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sorter-select {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #2c3e50;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding-right: 32px;
+}
+
+.sorter-select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.sorter-select:hover {
+  border-color: #3498db;
+}
+
+@media (max-width: 768px) {
+  .sorter-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .sorter-label {
+    margin-bottom: 4px;
+  }
+}

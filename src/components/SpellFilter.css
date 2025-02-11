@@ -1,0 +1,173 @@
+.spell-filter-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  opacity: 0;
+}
+
+.spell-filter-form.expanded {
+  max-height: 2000px; /* Adjust this value based on your content */
+  opacity: 1;
+  transition: max-height 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+.filter-toggle-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1em;
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+}
+
+.filter-toggle-button:hover {
+  background-color: #2980b9;
+}
+
+.filter-section {
+  padding: 15px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.section-title {
+  position: relative;
+  margin: 0;
+  padding: 0 0 8px 0;
+  font-size: 1em;
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 12px;
+  grid-column: 1 / -1;
+  border-bottom: 2px solid #e9ecef;
+}
+
+/* Remove the ::after pseudo-element since we're using border-bottom */
+/* .section-title::after { ... } */
+
+.filter-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  margin-bottom: 8px;
+  min-width: 0;
+}
+
+.spell-filter-label {
+  display: block;
+  font-size: 0.9em;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.spell-filter-input,
+.spell-filter-input-level {
+  width: 100%;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #2c3e50;
+  background-color: white;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  height: 36px;
+}
+
+.spell-filter-input:focus,
+.spell-filter-range input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.spell-filter-range {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+select.spell-filter-input {
+  cursor: pointer;
+  appearance: none;
+  padding-right: 32px;
+}
+
+.spell-filter-button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: 8px 24px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 120px;
+  max-width: 200px;
+}
+
+.spell-filter-button:hover {
+  background-color: #2980b9;
+}
+
+.spell-filter-button:active {
+  transform: translateY(1px);
+}
+
+@media (min-width: 768px) {
+  .filter-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+  }
+
+  .section-title {
+    grid-column: 1 / -1;
+  }
+
+  .filter-group {
+    min-width: 0; /* Prevents overflow in grid items */
+  }
+}
+
+@media (min-width: 1200px) {
+  .spell-filter-form {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .filter-section {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .spell-filter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-section {
+    grid-template-columns: 1fr;
+  }
+}

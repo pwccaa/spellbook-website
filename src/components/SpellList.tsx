@@ -7,6 +7,19 @@ interface SpellListProps {
 }
 
 const SpellList: React.FC<SpellListProps> = ({ spells }) => {
+  const formatComponents = (components: Spell['components']): string => {
+    const parts: string[] = [];
+    if (components.verbal) parts.push('V');
+    if (components.somatic) parts.push('S');
+    if (components.material) {
+      parts.push('M');
+      if (components.materials) {
+        parts.push(`(${components.materials})`);
+      }
+    }
+    return parts.join(', ');
+  };
+
   return (
     <div className="spell-list">
       <h2>Spell List</h2>
@@ -25,7 +38,7 @@ const SpellList: React.FC<SpellListProps> = ({ spells }) => {
             <p><b>Ritual:</b> {spell.ritual ? 'Yes' : 'No'}</p>
             <p><b>Casting Time:</b> {spell.casting_time}</p>
             <p><b>Range:</b> {spell.range}</p>
-            <p><b>Components:</b> {spell.components.raw}</p>
+            <p><b>Components:</b> {formatComponents(spell.components)}</p>
             <p><b>Duration:</b> {spell.duration}</p>
             <p>{spell.description}</p>
             </div>
